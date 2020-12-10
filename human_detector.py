@@ -113,6 +113,7 @@ def argsParser():
     args = vars(arg_parse.parse_args())
     return args
 
+
 if __name__ == "__main__":
     HOGCV = cv2.HOGDescriptor()
     HOGCV.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
