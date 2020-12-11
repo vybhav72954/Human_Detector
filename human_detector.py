@@ -41,6 +41,7 @@ def humanDetector(args):
         detectByPathImage(image_path, args['output'])
 
 def detectByCamera(writer):
+    print('Here')
     video = cv2.VideoCapture(0)
     print('Detecting people...')
     while True:
@@ -80,8 +81,8 @@ def detectByPathVideo(path, writer):
     video.release()
     cv2.destroyAllWindows()
 
-
 def detectByCamera(writer):
+    print('Not Here')
     video = cv2.VideoCapture(0)
     print('Detecting people...')
     while True:
@@ -91,13 +92,15 @@ def detectByCamera(writer):
             writer.write(frame)
         key = cv2.waitKey(1)
         if key == ord('q'):
-            break
+                break
     video.release()
     cv2.destroyAllWindows()
 
+
 def detectByPathImage(path, output_path):
+    cv2.namedWindow("output", cv2.WINDOW_NORMAL)
     image = cv2.imread(path)
-    image = imutils.resize(image, width = min(800, image.shape[1]))
+    image = imutils.resize(image, width=min(1800, image.shape[1]))
     result_image = detect(image)
     if output_path is not None:
         cv2.imwrite(output_path, result_image)
